@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>js中的点击事件（click）的实现方式</title>
+</head>
+<body>
+    <!-- 第三种方式-->
+    <button id="btn" onclick="onError()">触发错误</button>
+    <div>
+       <p><a href="https://www.pgyer.com/apiv2/app/install?_api_key=34776d2c388b4b21d6e68082250f7ccf&appKey=a425b1ef5e92f7ad732ce03ca32c3b1a">
+           下载文件
+       </a>
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        var btn = document.getElementById("btn");
+
+        // 第一种 通过点击事件
+        btn.onError = function(){
+
+            try {
+              throw new Error('触发了一个错误!');
+            } catch (e) {
+              console.log(e.name + ': ' + e.message);
+            }
+
+        }
+
+    </script>
+<script type="text/javascript">(function (w) {w.frontjsConfig={token:"4dc6c0efaab68eb29befb42fc2db916b",behaviour:15,captureConsoleLog:true,trustVendor:true,ignoreVendor:true,optimisedForSPA:true,useHistory:true,FPSThreshold:10};w.frontjsTmpData = {r:[],e:[],l:[]};w.frontjsTmpCollector = function (ev) {(ev.message ? window.frontjsTmpData.e : window.frontjsTmpData.r).push([new Date().getTime(), ev])};w.FrontJS = {addEventListener: function (t, f) {w.frontjsTmpData.l.push([t, f]);return f;},removeEventListener: function (t, f) {for (var i = 0; i < w.frontjsTmpData.l.length; i++) {t === w.frontjsTmpData.l[i][0] && f === w.frontjsTmpData.l[i][1] && w.frontjsTmpData.l.splice(i, 1);}return f;}};w.document.addEventListener("error", w.frontjsTmpCollector, true);w.addEventListener("error", w.frontjsTmpCollector, true);w.addEventListener("load", function () {var n = w.document.createElement("script");n.src = "https://frontjs-static.pgyer.com/dist/current/frontjs.web.min.js"; w.document.body.appendChild(n);}, true);})(window);</script>
+
+</body>
+</html>
