@@ -21,6 +21,11 @@
         btn.onError = function(){
 
             try {
+               if (window.FrontJS) {
+                    window.frontjsConfig.userData: {dingdapang: zuishuai}
+               }else{
+                   throw new Error('没有加载成功!');
+               }
               throw new Error('触发了一个错误!');
             } catch (e) {
               console.log(e.name + ': ' + e.message);
