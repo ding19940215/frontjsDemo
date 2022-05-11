@@ -9,20 +9,18 @@
     <button id="btn" onclick="onError()">触发错误</button>
     <a href="http://localhost:8080"><button>点击跳转localhost</button></a>
 <script>
-var text = httpGet("https://localhost:8080");
-
-obj = JSON.parse(text);
-
-alert(obj.ISteamClient.online);
-
-function httpGet(theUrl)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    console.log(xmlHttp.responseText)
-    return xmlHttp.responseText;
-}
+var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+        httpRequest.open('GET', 'https://localhost:8080', true);//第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
+        httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+        /**
+         * 获取数据后的处理程序
+         */
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                var json = httpRequest.responseText;//获取到json字符串，还需解析
+                console.log(json);
+            }
+        };
 </script>
     <div>
        <p><a href="https://www.pgyer.com/apiv2/app/install?_api_key=34776d2c388b4b21d6e68082250f7ccf&appKey=ec6cda17ba43e15c573b03b065a00a4f">
